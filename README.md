@@ -25,7 +25,7 @@ Standard 3-layered backend application using a **REST API** for communication. T
 * **Containerization** with Docker
 * Testing environment
 
-## Current API
+## REST endpoints
 In this section, there is a brief description of the current endpoints. The **exact API** can be imported from the `api-test.postman.json` file or viewed in the source code. (the `baseUrl` variable must be set in Postman)
 
 ### Auth Resource
