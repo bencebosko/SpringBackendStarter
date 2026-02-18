@@ -1,0 +1,9 @@
+{
+    "mail.all.header.greetings": "Dear {{firstName}},",
+    "mail.all.footer.goodbye": "Best wishes,",
+    "mail.all.footer.signature": "BackendStarter Team",
+
+    "mail.login-verification.subject.subject": "BackendStarter - {{verificationCode}}",
+    "mail.login-verification.body.first-paragraph": "We have received a login request with the username",
+    "mail.login-verification.body.second-paragraph": "Please verify your login with the following verification code:"
+}

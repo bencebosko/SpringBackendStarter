@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="create_table_user_role" author="bbence">
+        <createTable tableName="user_role">
+            <column name="id"
+                    type="${identity(long)}">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="role"
+                    type="${string(32)}">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="version"
+                    type="${long}"
+                    defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_table_join_users_user_role" author="bbence">
+        <createTable tableName="join_users_user_role">
+            <column name="user_id"
+                    type="${long}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_role_id"
+                    type="${long}">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="join_users_user_role"
+                                 baseColumnNames="user_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"
+                                 constraintName="fk_join_users_user_role_users"
+                                 deleteCascade="true"/>
+
+        <addForeignKeyConstraint baseTableName="join_users_user_role"
+                                 baseColumnNames="user_role_id"
+                                 constraintName="fk_join_users_user_role_user_role"
+                                 referencedTableName="user_role"
+                                 referencedColumnNames="id"
+                                 deleteCascade="true"/>
+    </changeSet>
+
+    <changeSet id="create_index_join_users_user_role(user_id)" author="bb">
+        <createIndex tableName="join_users_user_role" indexName="idx_join_users_user_role_user_id">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="create_table_user_auth" author="bbence">
+        <createTable tableName="user_auth">
+            <column name="id"
+                    type="${identity(long)}">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id"
+                    type="${long}">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="verification_code"
+                    type="${integer}">
+                <constraints nullable="true"/>
+            </column>
+            <column name="refresh_token"
+                    type="${string}">
+                <constraints nullable="true"/>
+            </column>
+            <column name="version"
+                    type="${long}"
+                    defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="user_auth"
+                                 baseColumnNames="user_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"
+                                 constraintName="fk_user_auth_users"
+                                 deleteCascade="true"/>
+    </changeSet>
+
+    <changeSet id="create_index_user_auth(user_id)" author="bbence">
+        <createIndex tableName="user_auth" indexName="idx_user_auth_user_id">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

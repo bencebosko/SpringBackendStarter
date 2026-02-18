@@ -1,0 +1,44 @@
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5433/spring_backend
+        username: admin
+        password: password
+        hikari:
+            maximum-pool-size: 10
+            minimum-idle: 10
+
+    jpa:
+        open-in-view: false
+        hibernate:
+            ddl-auto: validate
+
+    liquibase:
+        enabled: true
+        change-log: classpath:/liquibase/master.xml
+
+spring-backend:
+    default-user: default
+    default-password: password
+    default-email: default@gmail.com
+    login-verification-enabled: true
+
+    token:
+        encryption-key: 404E635266556A586E3272EW357ADJ53AEG87GZ82F413F4428D4Z7DSY2B4B6250645367566B5970E354G3245234GZ49826EAD234BCS
+        refresh-token-expiration-days: 30
+        access-token-validity-minutes: 10
+
+    mail:
+        from-address: admin@gmail.com
+        login-verification-processing-cron: '-'
+
+    rate-limiter:
+        requests-per-username:
+            request-count: 1
+            time-interval-seconds: 5
+
+        requests-per-token:
+            request-count: 2
+            time-interval-seconds: 5
+
+        cache-size: 1
+        cache-expiration-seconds: 60

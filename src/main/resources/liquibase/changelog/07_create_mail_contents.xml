@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="create_table_mail_contents" author="bbence">
+        <createTable tableName="mail_contents">
+            <column name="mail_id"
+                    type="${long}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mail_content"
+                    type="${string(32)}">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_index_mail_contents(mail_id)" author="bbence">
+        <createIndex tableName="mail_contents" indexName="idx_mail_contents_mail_id">
+            <column name="mail_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

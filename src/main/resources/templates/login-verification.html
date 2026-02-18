@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<body>
+<table role="presentation" style="font-size: 15px;">
+    <tr>
+        <td>
+            <div th:replace="~{includes/header :: header}"></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p style="margin: 15px 0 0 0;">
+                <span th:text="${firstParagraph}">We have received a login request with the username:</span>
+                <span style="font-weight: 600;" th:text="${username}">user</span>.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p style="margin: 15px 0 0 0;" th:text="${secondParagraph}">Please verify your login with the following verification code:</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p style="margin: 0; padding: 1rem 0; font-size: 30px; font-weight: 500; letter-spacing: 2px;" th:text="${verificationCode}">123456</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div th:replace="~{includes/footer :: footer}"></div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

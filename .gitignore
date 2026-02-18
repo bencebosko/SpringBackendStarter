@@ -1,0 +1,5 @@
+.idea
+target
+src/main/resources/cert/self-signed.p12
+docker/local/.env
+docker/services/spring-backend/spring-backend-starter-1.0.jar

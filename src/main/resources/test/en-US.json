@@ -1,0 +1,4 @@
+{
+    "test.key.simple-translation": "Simple",
+    "test.key.translation-with-replacements": "Translation{{first}}{{second}}"
+}

@@ -1,0 +1,64 @@
+server:
+    ssl:
+        key-store: classpath:/cert/self-signed.p12
+        key-store-type: PKCS12
+        key-alias: self-signed
+        key-store-password: ${CERT_PASSWORD}
+
+spring:
+    datasource:
+        url: jdbc:postgresql://${HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+        username: ${POSTGRES_USER}
+        password: ${POSTGRES_PASSWORD}
+        hikari:
+            maximum-pool-size: 10
+            minimum-idle: 10
+
+    jpa:
+        open-in-view: false
+        hibernate:
+            ddl-auto: validate
+
+    liquibase:
+        enabled: true
+        change-log: classpath:/liquibase/master.xml
+
+    mail:
+        host: ${SMTP_HOST}
+        port: ${SMTP_PORT}
+        username: ${SMTP_USER}
+        password: ${SMTP_PASSWORD}
+        protocol: smtp
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+
+spring-backend:
+    default-user: ${DEFAULT_USER}
+    default-password: ${DEFAULT_PASSWORD}
+    default-email: ${DEFAULT_EMAIL}
+    login-verification-enabled: true
+
+    token:
+        encryption-key: ${TOKEN_ENCRYPTION_KEY}
+        refresh-token-expiration-days: 30
+        access-token-validity-minutes: 10
+
+    mail:
+        from-address: ${SMTP_USER}
+        login-verification-processing-cron: '*/5 * * * * *'
+
+    rate-limiter:
+        requests-per-username:
+            request-count: 1
+            time-interval-seconds: 5
+
+        requests-per-token:
+            request-count: 2
+            time-interval-seconds: 5
+
+        cache-size: 1
+        cache-expiration-seconds: 60

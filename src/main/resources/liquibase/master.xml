@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <property  name="identity(long)"  value="BIGSERIAL"  dbms="postgresql"/>
+    <property  name="identity(int)"  value="SERIAL"  dbms="postgresql"/>
+    <property  name="string(16)"  value="VARCHAR(16)"  dbms="postgresql"/>
+    <property  name="string(32)"  value="VARCHAR(32)"  dbms="postgresql"/>
+    <property  name="string(64)"  value="VARCHAR(64)"  dbms="postgresql"/>
+    <property  name="string(128)"  value="VARCHAR(128)"  dbms="postgresql"/>
+    <property  name="string(256)"  value="VARCHAR(256)"  dbms="postgresql"/>
+    <property  name="string"  value="VARCHAR"  dbms="postgresql"/>
+    <property  name="integer"  value="INTEGER"  dbms="postgresql"/>
+    <property  name="long"  value="BIGINT"  dbms="postgresql"/>
+    <property  name="double"  value="DOUBLE PRECISION"  dbms="postgresql"/>
+    <property  name="float"  value="REAL"  dbms="postgresql"/>
+    <property  name="zoned_date"  value="TIMESTAMP WITH TIME ZONE"  dbms="postgresql"/>
+    <property  name="boolean"  value="BOOLEAN"  dbms="postgresql"/>
+
+    <include file="liquibase/changelog/01_create_users.xml"/>
+    <include file="liquibase/changelog/02_create_user_auth.xml"/>
+    <include file="liquibase/changelog/03_create_user_role.xml" />
+    <include file="liquibase/changelog/04_add_default_roles.xml"/>
+    <include file="liquibase/changelog/05_create_user_settings.xml"/>
+    <include file="liquibase/changelog/06_create_mail.xml"/>
+    <include file="liquibase/changelog/07_create_mail_contents.xml"/>
+
+</databaseChangeLog>
