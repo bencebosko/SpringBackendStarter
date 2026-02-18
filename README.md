@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="500" alt="logo" src="https://github.com/user-attachments/assets/a9114ae6-027e-47f3-a19e-7efed6a8043f" />
+    <img src="https://github.com/user-attachments/assets/1d167670-702c-44d8-8a08-3afcf2fdf5f3" width="500" alt="project-logo"/>
 </p>
 
 **Starter project** to build backend services with the [Spring Framework](https://spring.io/projects/spring-framework). The repository contains a simple, but **easily extendable** 3-layered application implementing **core features** that are neccessary in every web application. With this project its easy to spin up simpler backend applications. 
@@ -20,6 +20,7 @@ Standard 3-layered backend application using a **REST API** for communication. T
 * **Email sending** and persistence
 * Key based **rate limiting**
 * **PostgreSQL** database
+* Global exception handling
 * **Translation** loading from JSON files
 * **Containerization** with Docker
 * Testing environment
@@ -49,7 +50,7 @@ Resource for **writing** and **reading users**. Some operations require confirma
 
 ## Email templates
 <p align="left">
-  <img src="https://github.com/user-attachments/assets/f73ea461-e53f-4232-9e9b-c9db3f040995" width="400px" alt="login-verification" />
+  <img src="https://github.com/user-attachments/assets/254db2cf-9215-4fd3-90f1-d486d4a397dc" width="400px" alt="login-verification" />
 </p>
 
 ## Setup
@@ -57,7 +58,7 @@ Resource for **writing** and **reading users**. Some operations require confirma
 * **Docker installed**
 * **Java 21**
 * **Maven**
-* Shell (commands in the `.sh` scripts can be also run in command line)
+* Shell (commands in the `.sh` scripts can be run in command line)
 * Postman (optional)
 
 ### Certificate
@@ -102,9 +103,9 @@ Some of the currently used configuration properties:
 |------|-------------|
 | `hikari.maximum-pool-size` | Maximum concurrent connections with the database |
 | `hikari.minimum-idle` | Minimum connections in the of the connection pool kept alive |
-| `login-verification-enabled` | Turns on Two-Factor Authentication |
+| `login-verification-enabled` | Turns on Two-Factor Authentication. |
 | `token.encryption-key` | Access and Refresh tokens will be encrypted with this key. |
-| `token.refresh-token-expiration-days` | Refresh token will be valid until this date |
+| `token.refresh-token-expiration-days` | Refresh token will be valid until this date. |
 | `token.access-token-validity-minutes` | Short-term validity for Access tokens |
 | `mail.from-address` | Email address of the sender |
 | `mail.login-verification-processing-cron` | Processing and sending rate of the login verification mails. (every 5 seconds by default) |
