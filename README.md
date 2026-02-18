@@ -2,7 +2,7 @@
     <img src="https://github.com/user-attachments/assets/1d167670-702c-44d8-8a08-3afcf2fdf5f3" width="500" alt="project-logo"/>
 </p>
 
-**Starter project** to build backend services with the [Spring Framework](https://spring.io/projects/spring-framework). The repository contains a simple, but **easily extendable** 3-layered application implementing **core features** that are neccessary in every web application. With this project its easy to spin up simpler backend applications. 
+**Starter project** to build backend services with the [Spring Framework](https://spring.io/projects/spring-framework). The repository contains a simple, but **easily extendable** 3-layered architecture implementing **core features** that are neccessary in every web application. With this project its easy to spin up simpler backend applications. 
 
 :warning: This is an independent open-source project and is <ins>not officially maintained by the Spring Team<ins>.
 
@@ -129,4 +129,32 @@ Some of the currently used configuration properties:
 * Open the `Dockerfile` and set your own environment variables and arguments
 * Run the `build.sh` script to build the image (the name of the image can be changed in the script)
   
-### Customization
+## Customization
+### Renaming and refactoring classes
+First you should **rename** a few entities in the project:
+* Images and containers in the `docker` directory
+* The project in the `pom.xml`
+* The package structure
+* Every Class with the `SpringBackend.*` pattern
+* Prefix of the configuration properties
+* `SPRING_BACKEND_ERROR` constant
+
+### Translations
+* Navigate to the `resources/translations` directory
+* Open the `en-US.json` translation file and change the translation values
+* **Translation params** can be used with the `{{parameterName}}` syntax
+* Add new translation files using their **locale** as file name
+
+The content of the translation file currently:
+```
+{
+    "mail.all.header.greetings": "Dear {{firstName}},",
+    "mail.all.footer.goodbye": "Best wishes,",
+    "mail.all.footer.signature": "BackendStarter Team",
+
+    "mail.login-verification.subject.subject": "BackendStarter - {{verificationCode}}",
+    "mail.login-verification.body.first-paragraph": "We have received a login request with the username",
+    "mail.login-verification.body.second-paragraph": "Please verify your login with the following verification code:"
+}
+
+```
