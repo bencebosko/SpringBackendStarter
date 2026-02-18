@@ -2,7 +2,7 @@
     <img src="https://github.com/user-attachments/assets/6a71a3a4-4fae-47c8-8904-8023d1655b38" width="500" alt="project-logo"/>
 </p>
 
-**Starter project** to build backend services with the [Spring Framework](https://spring.io/projects/spring-framework). The repository contains a simple, but **easily extendable** 3-layered architecture implementing **core features** that are neccessary in every web application. With this project its easy to spin up simpler backend applications. 
+**Starter project** to build backend services with the [Spring Framework](https://spring.io/projects/spring-framework). The repository contains a simple but **easily extendable** 3-layered architecture, implementing **core features** that are neccessary in every web application. With this project its easy to spin up simpler backend applications. 
 
 :warning: This is an independent open-source project and is <ins>not officially maintained by the Spring Team<ins>.
 
@@ -25,7 +25,7 @@ Standard 3-layered backend application using a **REST API** for communication. T
 * **Containerization** with Docker
 * Testing environment
 
-## REST Endpoints
+## REST API
 In this section, there is a brief description of the current endpoints. The **exact API** can be imported from the `api-test.postman.json` file or viewed in the source code. (the `baseUrl` variable must be set in Postman)
 
 ### Auth Resource
@@ -43,7 +43,7 @@ Resource for **writing** and **reading users**. Some operations require confirma
 
 | Endpoint | Method | Role | Description | Request Body |
 |----------|------|---------------|------|--------------|
-| **/users/me** | **GET** | `AUTHENTICATED_USER` | Returns the current authenticated user. Access token cookie must be set. | |
+| **/users/me** | **GET** | `AUTHENTICATED_USER` | Returns the current authenticated user. | |
 | **/admin/users/** | **POST** | `ADMIN` | Creates a user with role `AUTHENTICATED_USER` and `SIMPLE_USER`. | `userRequest`, `confirmationPassword` |
 | **/admin/users/** | **PATCH** | `ADMIN` | Partially updates a user with the given username. | `username`, `userPatch`, `confirmationPassword`|
 | **/admin/users/** | **DELETE** | `ADMIN` | Deletes a user with the given username. | `username`, `confirmationPassword` |
@@ -53,7 +53,9 @@ Resource for **writing** and **reading users**. Some operations require confirma
   <img src="https://github.com/user-attachments/assets/254db2cf-9215-4fd3-90f1-d486d4a397dc" width="400px" alt="login-verification" />
 </p>
 
-## Setup
+## Setting up the application
+The section describes how to **setup**, **configure** and **start** the application with its dependencies.
+
 ### Requirements
 * **Docker installed**
 * **Java 21**
@@ -62,11 +64,15 @@ Resource for **writing** and **reading users**. Some operations require confirma
 * Postman (optional)
 
 ### Certificate
-* To generate a self-signed certificate, navigate to the base directory
+A self-signed certificate must be generated to enable TLS communication.
+
+* To generate the certificate, navigate to the base directory
 * Run the `generate-cert.sh` script. Do not forget to give a **custom password** with the `-storepass` switch.
 * If the certificate is successfully generated, put it in the the `src/main/resources/cert` directory.
 
 ### Environment variables
+For setting the environment variables, do the following steps:
+
 * Navigate to the `docker` directory
 * Copy the `.env.sample` file and paste it as **.env**
 * Set your own environment variables
@@ -94,6 +100,8 @@ All environment variables the application is currently using:
 | `CERT_PASSWORD` | Store password of the certificate |
 
 ### Configuration properties
+To use your own configurations:
+
 * Navigate to the `resources` directory
 * Set your configuration properties in the `application-*.yml` files
 
@@ -117,6 +125,8 @@ Some of the currently used configuration properties:
 | `rate-limiter.cache-expiration-seconds` | Unused keys are automatically removed from the rate limiter caches. |
 
 ### Starting the application
+After starting postgres, the application will be ready to start:
+
 * Navigate to the `docker` directory.
 * Build your **postgres** database image with the `services/postgres/build.sh` script
 * Start the postgres container in the **docker-compose** file
@@ -124,7 +134,9 @@ Some of the currently used configuration properties:
 * The application is listening on the configured host and port
 
 ### Containerization
-* For containerization, first package your application running `mvn clean package`
+To dockerize the application do the following steps:
+
+* Package your application running `mvn clean package`
 * Copy the **jar file** from the `target` directory into the `docker/services/spring-backend` directory
 * Open the `Dockerfile` and set your own environment variables and arguments
 * Run the `build.sh` script to build the image (the name of the image can be changed in the script)
@@ -132,6 +144,7 @@ Some of the currently used configuration properties:
 ## Customization
 ### Renaming and refactoring classes
 First you should **rename** a few entities in the project:
+
 * Images and containers in the `docker` directory
 * The project in the `pom.xml`
 * The package structure
@@ -140,6 +153,8 @@ First you should **rename** a few entities in the project:
 * `SPRING_BACKEND_ERROR` constant
 
 ### Translations
+To configure or add new translations:
+
 * Navigate to the `resources/translations` directory
 * Open the `en-US.json` translation file and change the translation values
 * **Translation params** can be used with the `{{parameterName}}` syntax
