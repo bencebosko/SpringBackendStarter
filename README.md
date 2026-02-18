@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/user-attachments/assets/1d167670-702c-44d8-8a08-3afcf2fdf5f3" width="500" alt="project-logo"/>
+    <img src="https://github.com/user-attachments/assets/52ba9a11-8411-4a4a-8579-f44972a70666" width="500" alt="project-logo"/>
 </p>
 
 **Starter project** to build backend services with the [Spring Framework](https://spring.io/projects/spring-framework). The repository contains a simple, but **easily extendable** 3-layered architecture implementing **core features** that are neccessary in every web application. With this project its easy to spin up simpler backend applications. 
