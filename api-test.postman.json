@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "df54ad4c-7051-46d9-8298-4e6901f5d1de",
+    "_postman_id": "53311e50-d2f7-40b2-8f4a-a866f2a39221",
     "name": "spring-backend-api",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "8187835",
-    "_collection_link": "https://go.postman.co/collection/8187835-df54ad4c-7051-46d9-8298-4e6901f5d1de?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/8187835-53311e50-d2f7-40b2-8f4a-a866f2a39221?source=collection_link"
   },
   "item": [
     {
@@ -91,7 +91,7 @@
         {
           "name": "refresh",
           "request": {
-            "method": "POST",
+            "method": "GET",
             "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/auth/refresh",

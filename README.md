@@ -31,12 +31,12 @@ In this section, there is a brief description of the current endpoints. The **ex
 ### Auth Resource
 Resource used for **authenticating** users.
 
-| Endpoint | Method | Description | Request Body |
-|----------|------|---------------|--------------|
+| Endpoint | Method   | Description | Request Body |
+|----------|----------|---------------|--------------|
 | **/auth/authenticate** | **POST** | Authenticates users. Sends login verification email if enabled. | `usernameOrEmail` , `password` |
 | **/auth/login** | **POST** | Logs users in with the verification code. Generates access and refresh token cookies. | `usernameOrEmail` , `password`, `verificationCode` |
 | **/auth/logout** | **POST** | Removes the refresh token from the database. Invalidates access and refresh token cookies. | |
-| **/auth/refresh** | **POST** | Refreshes the access token. Refresh token cookie must be set in the request. | |
+| **/auth/refresh** | **GET**  | Refreshes the access token. Refresh token cookie must be set in the request. | |
 
 ### User Resource
 Resource for **writing** and **reading users**. Some operations require confirmation password, which must match the password of the authenticated user.
@@ -68,7 +68,7 @@ A self-signed certificate must be generated to enable TLS communication.
 
 * To generate the certificate, navigate to the base directory
 * Run the `generate-cert.sh` script. Do not forget to give a **custom password** with the `-storepass` switch.
-* If the certificate is successfully generated, put it in the the `src/main/resources/cert` directory.
+* If the certificate is successfully generated, put it in the `src/main/resources/cert` directory.
 
 ### Environment variables
 For setting the environment variables, do the following steps:
