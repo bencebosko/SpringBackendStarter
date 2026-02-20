@@ -15,7 +15,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @ExtendWith(MockitoExtension.class)
@@ -27,7 +26,7 @@ public class UserMapperTest {
     private static final String ENCODED_PASSWORD = "encodedPassword";
     private static final String FIRST_NAME = "firstName";
     private static final String LAST_NAME = "lastName";
-    private static final Set<Role> ROLES = Set.of(Role.AUTHENTICATED_USER, Role.SIMPLE_USER);
+    private static final List<Role> ROLES = List.of(Role.AUTHENTICATED_USER, Role.SIMPLE_USER);
 
     @Mock
     private PasswordEncoder passwordEncoder;
@@ -159,6 +158,7 @@ public class UserMapperTest {
         Assertions.assertEquals(user.getEmail(), userResponse.getEmail());
         Assertions.assertEquals(user.getFirstName(), userResponse.getFirstName());
         Assertions.assertEquals(user.getLastName(), userResponse.getLastName());
+        Assertions.assertEquals(ROLES, userResponse.getRoles());
     }
 
     private UserRequest createUserRequest() {
