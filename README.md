@@ -31,9 +31,9 @@ In this section, there is a brief description of the current endpoints. The **ex
 ### Auth Resource
 Resource used for **authenticating** users.
 
-| Endpoint | Method   | Description | Request Body |
-|----------|----------|---------------|--------------|
-| **/auth/authenticate** | **POST** | Authenticates users. Sends login verification email if enabled. | `usernameOrEmail` , `password` |
+| Endpoint | Method   | Description | Request Body | Response |
+|----------|----------|---------------|------------|----------|
+| **/auth/authenticate** | **POST** | Authenticates users. Sends login verification email if enabled. | `usernameOrEmail` , `password` | `authResponse`
 | **/auth/login** | **POST** | Logs users in with the verification code. Generates access and refresh token cookies. | `usernameOrEmail` , `password`, `verificationCode` |
 | **/auth/logout** | **POST** | Removes the refresh token from the database. Invalidates access and refresh token cookies. | |
 | **/auth/refresh** | **GET**  | Refreshes the access token. Refresh token cookie must be set in the request. | |
@@ -41,9 +41,9 @@ Resource used for **authenticating** users.
 ### User Resource
 Resource for **writing** and **reading users**. Some operations require confirmation password, which must match the password of the authenticated user.
 
-| Endpoint | Method | Role | Description | Request Body |
-|----------|------|---------------|------|--------------|
-| **/users/me** | **GET** | `AUTHENTICATED_USER` | Returns the current authenticated user. | |
+| Endpoint | Method | Role | Description | Request Body | Response |
+|----------|------|---------------|------|--------------|----------|
+| **/users/me** | **GET** | `AUTHENTICATED_USER` | Returns the current authenticated user. | | `userResponse`
 | **/admin/users/** | **POST** | `ADMIN` | Creates a user with role `AUTHENTICATED_USER` and `SIMPLE_USER`. | `userRequest`, `confirmationPassword` |
 | **/admin/users/** | **PATCH** | `ADMIN` | Partially updates a user with the given username. | `username`, `userPatch`, `confirmationPassword`|
 | **/admin/users/** | **DELETE** | `ADMIN` | Deletes a user with the given username. | `username`, `confirmationPassword` |
